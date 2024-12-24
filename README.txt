@@ -1,6 +1,6 @@
 # TP SQL Automatique
 
-Ce projet génère automatiquement un TP SQL complet sous forme de page HTML interactive à partir d'un fichier SQL structuré. Les questions, requêtes SQL, solutions et résultats des requêtes sont extraits et mis en forme.
+Ce projet génère automatiquement un TP SQL complet sous forme de page HTML interactive à partir d'un fichier SQL structuré. Les questions, requêtes SQL, solutions optionnelles et résultats des requêtes sont extraits et mis en forme.
 
 ## Fonctionnalités
 
@@ -13,7 +13,7 @@ Ce projet génère automatiquement un TP SQL complet sous forme de page HTML int
    - Les résultats sont récupérés et formatés en tableau.
 
 3. **Génération de Fichiers Automatique** :
-   - `index.html` : Une page HTML avec les questions, solutions, et tableaux des résultats.
+   - `index.html` : Une page HTML avec les questions, solutions optionnelles, et tableaux des résultats.
    - `script.js` : Le script JavaScript pour gérer l'interactivité (afficher/masquer les solutions, mise en évidence des mots-clés SQL, etc.).
    - `style.css` : Les styles pour une présentation propre et moderne.
    - Un fichier image MCD est inclus si spécifié.
@@ -69,6 +69,7 @@ output/
    - Assurez-vous d'avoir une base de données SQLite prête.
    - Créez un fichier SQL contenant vos questions et requêtes selon le format spécifié.
    - Placez une image MPD dans le dossier spécifié.
+   - configurer les variables au début du script Python (chemins, générer les solutions ou non)
 
 2. **Exécutez le script** :
 

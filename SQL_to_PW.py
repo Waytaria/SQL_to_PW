@@ -6,6 +6,7 @@ db_path = "sample/Voyage.db"
 sql_file = "sample/voyage_rq.sql"
 output_dir = "output"
 mpd_file_path = "sample/mpd.png"
+include_solutions = False
 
 # Fonction pour parser le fichier SQL
 def parse_sql_file(sql_file):
@@ -32,7 +33,7 @@ def parse_sql_file(sql_file):
     return questions
 
 # Fonction principale pour exécuter les requêtes et générer les fichiers
-def execute_queries_and_generate_files(db_path, sql_file, output_dir):
+def execute_queries_and_generate_files(db_path, sql_file, output_dir, include_solutions):
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
@@ -45,6 +46,7 @@ def execute_queries_and_generate_files(db_path, sql_file, output_dir):
     for entry in questions:
         question = entry["question"]
         query = entry["sql"]
+        table = []
         try:
             cursor.execute(query)
             rows = cursor.fetchall()
@@ -52,11 +54,9 @@ def execute_queries_and_generate_files(db_path, sql_file, output_dir):
             table = [columns] + rows
         except sqlite3.Error as e:
             print(f"Erreur lors de l'exécution de la requête SQL pour '{question}': {e}")
-            table = []
-
         results.append({
             "question": question,
-            "sql": query,
+            "sql": query if include_solutions else "",
             "table": table
         })
 
@@ -89,7 +89,9 @@ const generatePage = (data) => {{
         const questionContainer = document.createElement('div');
         questionContainer.classList.add('question-container');
         questionContainer.appendChild(questionText);
-        questionContainer.appendChild(toggleButton);
+        if (item.sql) {{
+            questionContainer.appendChild(toggleButton);
+        }}
 
         const solutionDiv = document.createElement('div');
         solutionDiv.classList.add('solution');
@@ -341,7 +343,7 @@ button.toggle-button:hover {
     conn.close()
 
 mpd_output_path = os.path.join(output_dir, os.path.basename(mpd_file_path))
-execute_queries_and_generate_files(db_path, sql_file, output_dir)
+execute_queries_and_generate_files(db_path, sql_file, output_dir, include_solutions)
 with open(mpd_file_path, 'rb') as source_file:
     with open(mpd_output_path, 'wb') as dest_file:
         dest_file.write(source_file.read())
