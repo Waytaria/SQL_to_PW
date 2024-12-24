@@ -86,4 +86,4 @@ Les contributions sont les bienvenues ! Si vous trouvez des bugs ou avez des su
 
 ## Licence
 
-Ce projet est sous licence MIT. Vous êtes libre de l'utiliser, de le modifier et de le partager. Merci de simplement me créditer si vous réutiliser le projet :)
+Ce projet est sous licence MIT. Vous êtes libre de l'utiliser, de le modifier et de le partager. Merci de simplement me créditer si vous réutilisez le projet :)
