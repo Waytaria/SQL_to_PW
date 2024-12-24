@@ -36,13 +36,11 @@ def parse_sql_file(sql_file):
 def execute_queries_and_generate_files(db_path, sql_file, output_dir, include_solutions):
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
-
     questions = parse_sql_file(sql_file)
     results = []
-
-    # Créer le dossier de sortie s'il n'existe pas
     os.makedirs(output_dir, exist_ok=True)
 
+    # Execute les requêtes
     for entry in questions:
         question = entry["question"]
         query = entry["sql"]
