@@ -4,6 +4,11 @@
   "description": "Générer un TP SQL interactif à partir d'un fichier SQL.",
   "version": "1.0.0",
   "publisher": "Waytaria",
+  "icon": "logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Waytaria/generate-sql-tp"
+  },
   "engines": {
     "vscode": "^1.78.0"
   },
@@ -19,5 +24,31 @@
       }
     ]
   },
-  "dependencies": {}
+  "dependencies": {},
+  "scripts": {
+    "prepublish": "vsce package",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "keywords": [
+    "SQL",
+    "TP",
+    "Education",
+    "VSCode",
+    "Python"
+  ],
+  "categories": [
+    "Other",
+    "Programming Languages"
+  ],
+  "homepage": "https://github.com/Waytaria/generate-sql-tp",
+  "bugs": {
+    "url": "https://github.com/Waytaria/generate-sql-tp/issues",
+    "email": "contact@thomas-ferragu.me"
+  },
+  "pythonDependencies": [
+    "sqlite3",
+    "json",
+    "os",
+    "argparse"
+  ]
 }
