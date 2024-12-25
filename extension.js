@@ -19,12 +19,12 @@ function activate(context) {
         // Demander les chemins des fichiers nécessaires
         const dbPath = await vscode.window.showInputBox({
             prompt: "Chemin relatif au fichier de base de données SQLite",
-            value: "Voyage.db"
+            value: "yourDatabase.db"
         });
 
         const sqlFile = await vscode.window.showInputBox({
             prompt: "Chemin relatif au fichier SQL",
-            value: "voyage_rq.sql"
+            value: "SQL_rq_file.sql"
         });
 
         const outputDir = await vscode.window.showInputBox({
