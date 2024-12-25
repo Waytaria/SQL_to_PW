@@ -2,7 +2,7 @@
   "name": "SQL-to-Edu-Document",
   "displayName": "Educational Work Document from SQL",
   "description": "This project automatically generates a complete SQL Practical Work document as an interactive HTML page from a SQL file. Questions, SQL queries, optional solutions, and query results are extracted and formatted.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "Waytaria",
   "icon": "logo.png",
   "repository": {

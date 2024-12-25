@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 function activate(context) {
-    let disposable = vscode.commands.registerCommand('extension.generateTP', async function () {
+    let disposable = vscode.commands.registerCommand('extension.SQL-to-Doc', async function () {
         const editor = vscode.window.activeTextEditor;
 
         // Vérifier qu'un workspace est ouvert
