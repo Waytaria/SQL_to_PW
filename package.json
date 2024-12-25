@@ -1,8 +1,8 @@
 {
-  "name": "generate-sql-tp",
-  "displayName": "Generate SQL TP",
-  "description": "Générer un TP SQL interactif à partir d'un fichier SQL.",
-  "version": "1.0.0",
+  "name": "SQL-to-Edu-Document",
+  "displayName": "Educational Work Document from SQL",
+  "description": "This project automatically generates a complete SQL Practical Work document as an interactive HTML page from a SQL file. Questions, SQL queries, optional solutions, and query results are extracted and formatted.",
+  "version": "1.0.1",
   "publisher": "Waytaria",
   "icon": "logo.png",
   "repository": {
@@ -13,14 +13,14 @@
     "vscode": "^1.78.0"
   },
   "activationEvents": [
-    "onCommand:extension.generateTP"
+    "onCommand:extension.SQL-to-Doc"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "extension.generateTP",
-        "title": "Générer un TP SQL"
+        "command": "extension.SQL-to-Doc",
+        "title": "Create the HTML document from SQL file analysis"
       }
     ]
   },

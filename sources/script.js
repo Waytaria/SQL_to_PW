@@ -45,7 +45,7 @@ const generatePage = (data) => {
         toggleButton.addEventListener('click', () => {
             const isHidden = solutionDiv.style.display === "none" || solutionDiv.style.display === "";
             solutionDiv.style.display = isHidden ? "block" : "none";
-            toggleButton.textContent = isHidden ? "Masquer" : "Solution";
+            toggleButton.textContent = isHidden ? "Hide" : "Solution";
         });
     });
 };
