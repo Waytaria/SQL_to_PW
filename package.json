@@ -1,0 +1,23 @@
+{
+  "name": "generate-sql-tp",
+  "displayName": "Generate SQL TP",
+  "description": "Générer un TP SQL interactif à partir d'un fichier SQL.",
+  "version": "1.0.0",
+  "publisher": "Waytaria",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "activationEvents": [
+    "onCommand:extension.generateTP"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.generateTP",
+        "title": "Générer un TP SQL"
+      }
+    ]
+  },
+  "dependencies": {}
+}

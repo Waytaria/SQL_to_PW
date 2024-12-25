@@ -1,20 +1,35 @@
 import sqlite3
 import json
 import os
+import argparse
+import shutil
 
-db_path = "sample/Voyage.db"
-sql_file = "sample/voyage_rq.sql"
-output_dir = "output"
-mpd_file_path = "sample/mpd.png"
-include_solutions = True
+# Configuration des arguments
+parser = argparse.ArgumentParser(description="Générer un TP SQL.")
+parser.add_argument("--db_path", required=True, help="Chemin vers la base de données SQLite.")
+parser.add_argument("--sql_file", required=True, help="Chemin vers le fichier SQL.")
+parser.add_argument("--output_dir", required=True, help="Dossier de sortie.")
+parser.add_argument("--mpd_file_path", required=True, help="Chemin vers le fichier MPD.")
+parser.add_argument("--include_solutions", required=True, help="Inclure les solutions dans le TP.")
+args = parser.parse_args()
 
-def copy_file(source_path, destination_dir):
-    os.makedirs(destination_dir, exist_ok=True)
+# Début du code
+db_path = args.db_path
+sql_file = args.sql_file
+output_dir = args.output_dir
+mpd_file_path = args.mpd_file_path
+include_solutions = args.include_solutions == 'true'
+
+
+# Fonction pour copier un fichier depuis le dossier de l'extension vers un autre emplacement
+def copy_file(source_relative_path, destination_dir):
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    source_path = os.path.join(base_dir, source_relative_path)
+    if not os.path.exists(source_path):
+        raise FileNotFoundError(f"Le fichier source '{source_path}' est introuvable.")
     destination_path = os.path.join(destination_dir, os.path.basename(source_path))
-    with open(source_path, 'r', encoding='utf-8') as source_file:
-        content = source_file.read()
-    with open(destination_path, 'w', encoding='utf-8') as dest_file:
-        dest_file.write(content)
+    os.makedirs(destination_dir, exist_ok=True)
+    shutil.copyfile(source_path, destination_path)
     print(f"Fichier copié : {destination_path}")
 
 # Fonction pour parser le fichier SQL
@@ -69,11 +84,11 @@ for entry in questions:
 
 # Créer les fichiers
 os.makedirs(output_dir, exist_ok=True)
-with open('./output/data.js', 'w') as json_file :
+with open(os.path.join(output_dir, 'data.js'), 'w') as json_file :
     json_file.write(f"jsonData = {json.dumps(results, indent=4, ensure_ascii=True)}")
-copy_file("./sources/script.js", output_dir)
-copy_file("./sources/index.html", output_dir)
-copy_file("./sources/style.css", output_dir)
+copy_file("../sources/script.js", output_dir)
+copy_file("../sources/index.html", output_dir)
+copy_file("../sources/style.css", output_dir)
 # Copie de l'image
 with open(mpd_file_path, 'rb') as source_file:
     with open(mpd_output_path, 'wb') as dest_file:
